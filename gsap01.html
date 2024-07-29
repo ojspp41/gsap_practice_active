@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP Scroll Effect</title>
+
+    <!-- 외부 폰트 불러오기 -->
+    <link href="https://webfontworld.github.io/NexonLv1Gothic/NexonLv1Gothic.css" rel="stylesheet">
+    <style>
+        /* 기본 스타일 초기화 */
+        * { margin: 0; padding: 0; }
+        a { color: #fff; text-decoration: none; }
+        body { color: #fff; font-family: "NexonLv1Gothic"; font-weight: 300; background-color: #111; }
+
+        /* 헤더 스타일 */
+        #parallax__title {
+            position: fixed; left: 20px; top: 20px; z-index: 1000;
+        }
+        #parallax__title h1 {
+            font-size: 30px; border-bottom: 1px dashed #fff; margin-bottom: 10px; padding-bottom: 5px; font-weight: 400; display: inline-block;
+        }
+        #parallax__title p { font-size: 16px; }
+        #parallax__title ul { margin-top: 10px; }
+        #parallax__title li { display: inline; }
+        #parallax__title li a {
+            width: 20px; height: 20px; border-radius: 50%; border: 1px dashed #fff; display: inline-block; text-align: center; line-height: 20px; font-size: 12px;
+        }
+        #parallax__title li.active a {
+            background: #fff; color: #000;
+        }
+
+        /* 메인 콘텐츠 스타일 */
+        #parallax__cont { overflow: hidden; }
+        .parallax__item {
+            width: 100%; height: 100vh; position: relative; display: flex; align-items: center; justify-content: center;
+        }
+        .parallax__item:nth-child(2n) { background-color: #222; }
+        .parallax__item__num {
+            position: absolute; right: 20px; bottom: 20px; font-size: 5vw; line-height: 1;
+        }
+        .parallax__item__img {
+            width: 10vw; height: 10vw; background-color: #fff; background-size: cover; background-position: center;
+        }
+        /* 각 섹션의 배경 이미지 설정 */
+        .parallax__item:nth-child(1) .parallax__item__img { background-image: url(assets/img/images14.jpg); }
+        .parallax__item:nth-child(2) .parallax__item__img { background-image: url(assets/img/images15.jpg); }
+        .parallax__item:nth-child(3) .parallax__item__img { background-image: url(assets/img/images03.jpg); }
+        .parallax__item:nth-child(4) .parallax__item__img { background-image: url(assets/img/images04.jpg); }
+        .parallax__item:nth-child(5) .parallax__item__img { background-image: url(assets/img/images05.jpg); }
+        .parallax__item:nth-child(6) .parallax__item__img { background-image: url(assets/img/images06.jpg); }
+        .parallax__item:nth-child(7) .parallax__item__img { background-image: url(assets/img/images07.jpg); }
+        .parallax__item:nth-child(8) .parallax__item__img { background-image: url(assets/img/images08.jpg); }
+        .parallax__item:nth-child(9) .parallax__item__img { background-image: url(assets/img/images09.jpg); }
+        .parallax__item__img.active {
+            filter: hue-rotate(100deg);
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 섹션 -->
+    <header id="parallax__title">
+        <h1>GSAP Parallax Effect01</h1>
+        <p>GSAP scrollTrigger - 애니메이션 기본 효과</p>
+        <ul>
+            <li class="active"><a href="gsap01.html">1</a></li>
+            <li><a href="gsap02.html">2</a></li>
+            <li><a href="gsap03.html">3</a></li>
+            <li><a href="gsap04.html">4</a></li>
+            <li><a href="gsap05.html">5</a></li>
+            <li><a href="gsap06.html">6</a></li>
+            <li><a href="gsap07.html">7</a></li>
+            <li><a href="gsap08.html">8</a></li>
+            <li><a href="gsap09.html">9</a></li>
+            <li><a href="gsap10.html">10</a></li>
+            <li><a href="gsap11.html">11</a></li>
+            <li><a href="gsap12.html">12</a></li>
+            <li><a href="gsap13.html">13</a></li>
+            <li><a href="gsap14.html">14</a></li>
+            <li><a href="gsap15.html">15</a></li>
+        </ul>
+    </header>
+    <!-- //parallax__title  -->
+
+    <!-- 메인 콘텐츠 섹션 -->
+    <main id="parallax__cont">
+        <!-- 각 섹션을 패럴랙스 아이템으로 정의 -->
+        <section id="section1" class="parallax__item">
+            <span class="parallax__item__num">01</span>
+            <div class="parallax__item__img"></div>
+        </section>
+        <!-- //section1 -->
+
+        <section id="section2" class="parallax__item">
+            <span class="parallax__item__num">02</span>
+            <div class="parallax__item__img"></div>
+        </section>
+        <!-- //section2 -->
+
+        <section id="section3" class="parallax__item">
+            <span class="parallax__item__num">03</span>
+            <div class="parallax__item__img"></div>
+        </section>
+        <!-- //section3 -->
+
+        <section id="section4" class="parallax__item">
+            <span class="parallax__item__num">04</span>
+            <div class="parallax__item__img"></div>
+        </section>
+        <!-- //section4 -->
+
+        <section id="section5" class="parallax__item">
+            <span class="parallax__item__num">05</span>
+            <div class="parallax__item__img"></div>
+        </section>
+        <!-- //section5 -->
+
+        <section id="section6" class="parallax__item">
+            <span class="parallax__item__num">06</span>
+            <div class="parallax__item__img"></div>
+        </section>
+        <!-- //section6 -->
+
+        <section id="section7" class="parallax__item">
+            <span class="parallax__item__num">07</span>
+            <div class="parallax__item__img"></div>
+        </section>
+        <!-- //section7 -->
+
+        <section id="section8" class="parallax__item">
+            <span class="parallax__item__num">08</span>
+            <div class="parallax__item__img"></div>
+        </section>
+        <!-- //section8 -->
+
+        <section id="section9" class="parallax__item">
+            <span class="parallax__item__num">09</span>
+            <div class="parallax__item__img"></div>
+        </section>
+        <!-- //section9 -->
+    </main>
+
+    <!-- GSAP 및 ScrollTrigger 스크립트 불러오기 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/ScrollToPlugin.min.js"></script>
+    <script>
+        // 각 섹션의 이미지 요소 선택
+        const box1 = document.querySelector("#section1 .parallax__item__img");
+        const box2 = document.querySelector("#section2 .parallax__item__img");
+        const box3 = document.querySelector("#section3 .parallax__item__img");
+        const box4 = document.querySelector("#section4 .parallax__item__img");
+        const box5 = document.querySelector("#section5 .parallax__item__img");
+        const box6 = document.querySelector("#section6 .parallax__item__img");
+        const box7 = document.querySelector("#section7 .parallax__item__img");
+        const box8 = document.querySelector("#section8 .parallax__item__img");
+        const box9 = document.querySelector("#section9 .parallax__item__img");
+
+        // 첫 번째 섹션의 이미지에 애니메이션 적용
+        gsap.to(box1, {
+            x: 500,  // x축으로 500px 이동
+            y: 500,  // y축으로 500px 이동
+            duration: 2,  // 애니메이션 지속 시간 2초
+            borderRadius: 100,  // 테두리 둥글게
+            rotation: 360,  // 360도 회전
+        });
+
+        // 두 번째 섹션의 이미지에 스크롤 트리거 애니메이션 적용
+        gsap.to(box2, {
+            duration: 2,  // 애니메이션 지속 시간 2초
+            x: 500,  // x축으로 500px 이동
+            rotation: 360,  // 360도 회전
+            borderRadius: 100,  // 테두리 둥글게
+            scrollTrigger: {
+                trigger: box2,  // 스크롤 트리거 시작점 설정
+            }
+        });
+        gsap.to(box3, {
+            duration: 1,      // 애니메이션의 지속 시간 (초)
+            x: 500,           // 요소를 x축으로 500px 이동
+            rotation: 360,    // 요소를 360도 회전
+            borderRadius: 100, // 요소의 모서리를 둥글게 만듦 (100px 반경)
+
+            scrollTrigger: {
+                trigger: box3,    // 애니메이션이 시작되는 트리거 요소
+                toggleActions: "play pause reverse none" // 트리거 발생 시 애니메이션 동작을 정의
+                // "play": 스크롤 시 애니메이션 재생
+                // "pause": 스크롤이 멈추면 애니메이션 일시 중지
+                // "reverse": 스크롤 방향을 반대로 하면 애니메이션 역재생
+                // "none": 애니메이션 완료 후 아무 동작도 하지 않음
+            }
+        });
+        gsap.to(box4, {
+            duration: 1,      // 애니메이션의 지속 시간 (초)
+            x: 500,           // 요소를 x축으로 500px 이동
+            rotation: 360,    // 요소를 360도 회전
+            borderRadius: 100, // 요소의 모서리를 둥글게 만듦 (100px 반경)
+
+            scrollTrigger: {
+                trigger: box4,    // 애니메이션이 시작되는 트리거 요소
+                start: "top 50%", // 트리거가 시작되는 지점 (트리거 요소의 상단이 뷰포트의 50% 지점에 도달할 때)
+                end: "bottom 20%", // 트리거가 종료되는 지점 (트리거 요소의 하단이 뷰포트의 20% 지점에 도달할 때)
+                toggleActions: "play pause reverse pause", // 트리거 발생 시 애니메이션 동작을 정의
+                // "play": 스크롤 시 애니메이션 재생
+                // "pause": 스크롤이 멈추면 애니메이션 일시 중지
+                // "reverse": 스크롤 방향을 반대로 하면 애니메이션 역재생
+                // "pause": 애니메이션 완료 후 일시 중지
+                markers: true, // 스크롤 트리거 시작 및 끝 지점을 시각적으로 표시
+            }
+        });
+        gsap.to(box5, {
+            duration: 1,      // 애니메이션의 지속 시간 (초)
+            x: 500,           // 요소를 x축으로 500px 이동
+            rotation: 360,    // 요소를 360도 회전
+            borderRadius: 100, // 요소의 모서리를 둥글게 만듦 (100px 반경)
+
+            scrollTrigger: {
+                trigger: box5,    // 애니메이션이 시작되는 트리거 요소
+                start: "top 50%", // 트리거가 시작되는 지점 (트리거 요소의 상단이 뷰포트의 50% 지점에 도달할 때)
+                end: "bottom 20%", // 트리거가 종료되는 지점 (트리거 요소의 하단이 뷰포트의 20% 지점에 도달할 때)
+                scrub: 3,    // 스크럽 효과 설정 (true, 1, 2, ...으로 설정 가능, 값이 클수록 애니메이션이 더 느리게 따라감)
+                markers: true, // 스크롤 트리거의 시작 및 끝 지점을 시각적으로 표시 (여기서는 false로 설정하여 표시하지 않음)
+            }
+        });
+
+        // 06 : pin
+        gsap.to(box6, {
+            duration: 2,      // 애니메이션의 지속 시간 (초)
+            x: 500,           // 요소를 x축으로 500px 이동
+            rotation: 360,    // 요소를 360도 회전
+            borderRadius: 100, // 요소의 모서리를 둥글게 만듦 (100px 반경)
+
+            scrollTrigger: {
+                trigger: box6,    // 애니메이션이 시작되는 트리거 요소
+                start: "top 50%", // 트리거가 시작되는 지점 (트리거 요소의 상단이 뷰포트의 50% 지점에 도달할 때)
+                end: "top 100px", // 트리거가 종료되는 지점 (트리거 요소의 상단이 뷰포트의 100px 지점에 도달할 때)
+                pin: true,        // 스크롤 트리거가 활성화된 동안 요소를 고정
+                scrub: true,      // 스크롤과 애니메이션을 동기화하여 자연스러운 애니메이션 재생
+                markers: true,    // 스크롤 트리거의 시작 및 끝 지점을 시각적으로 표시
+            }
+        });
+        // 07 : toggleClass
+        gsap.to(box7, {
+            duration: 2,      // 애니메이션의 지속 시간 (초)
+            x: 500,           // 요소를 x축으로 500px 이동
+            rotation: 360,    // 요소를 360도 회전
+            borderRadius: 100, // 요소의 모서리를 둥글게 만듦 (100px 반경)
+
+            scrollTrigger: {
+                trigger: box7,    // 애니메이션이 시작되는 트리거 요소
+                start: "top center", // 트리거가 시작되는 지점 (트리거 요소의 상단이 뷰포트의 중앙에 도달할 때)
+                end: "bottom top", // 트리거가 종료되는 지점 (트리거 요소의 하단이 뷰포트의 상단에 도달할 때)
+                scrub: true,      // 스크롤과 애니메이션을 동기화하여 자연스러운 애니메이션 재생
+                markers: true,    // 스크롤 트리거의 시작 및 끝 지점을 시각적으로 표시
+                toggleClass: "active", // 트리거가 활성화될 때 클래스 "active"를 추가하고, 비활성화될 때 제거
+                id: "box7"        // 스크롤 트리거의 식별자 (디버깅 및 식별 용도)
+            }
+        });
+
+        // 08 : callback
+        gsap.to(box8, {
+            duration: 2,      // 애니메이션의 지속 시간 (초)
+            x: 500,           // 요소를 x축으로 500px 이동
+            rotation: 360,    // 요소를 360도 회전
+            borderRadius: 100, // 요소의 모서리를 둥글게 만듦 (100px 반경)
+
+            scrollTrigger: {
+                trigger: box8,    // 애니메이션이 시작되는 트리거 요소
+                start: "top center", // 트리거가 시작되는 지점 (트리거 요소의 상단이 뷰포트의 중앙에 도달할 때)
+                end: "bottom 30%", // 트리거가 종료되는 지점 (트리거 요소의 하단이 뷰포트의 30% 지점에 도달할 때)
+                scrub: true,      // 스크롤과 애니메이션을 동기화하여 자연스러운 애니메이션 재생
+                markers: false,   // 스크롤 트리거의 시작 및 끝 지점을 시각적으로 표시하지 않음
+                
+                // 콜백 함수 설정
+                // 트리거가 활성화될 때 호출
+                onToggle: (self) => {
+                    console.log("onToggle", self.isActive);
+                },
+                // 트리거가 뷰포트에 진입할 때 호출
+                onEnter: () => {
+                    console.log("onEnter");
+                },
+                // 트리거가 뷰포트를 벗어날 때 호출
+                onLeave: () => {
+                    console.log("onLeave");
+                },
+                // 트리거가 다시 뷰포트에 진입할 때 호출
+                onEnterBack: () => {
+                    console.log("onEnterBack");
+                },
+                // 트리거가 다시 뷰포트를 벗어날 때 호출
+                onLeaveBack: () => {
+                    console.log("onLeaveBack");
+                },
+                // 스크롤 트리거가 업데이트될 때 호출
+                onUpdate: (self) => {
+                    console.log("onUpdate", self.progress.toFixed(3));
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
